@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Human() {
   const [human, setHuman] = useState([]);
 
+  const navigate = useNavigate(); 
   const getHuman = async () => {
     const res = await axios("https://shingekiapi.herokuapp.com/human");
     setHuman(res.data);
@@ -13,6 +15,11 @@ function Human() {
   useEffect(() => {
     getHuman();
   }, []);
+
+  const navigateToHuman = (human) => {
+    navigate(`/human/${human.name}`, {state: human});
+  };
+
 
   return (
     <div className="human__container">
@@ -24,10 +31,11 @@ function Human() {
                 className="human__image"
                 src={human.image}
                 alt={human.name}
+                onClick={() => navigateToHuman(human)}
               />
               <div className="human__info">
                 <div>
-                  ID: {human.id} - <strong>{human.name}</strong>
+                  Name: <strong>{human.name}</strong>
                 </div>
                 <div>
                   Origin: <strong>{human.origin}</strong>

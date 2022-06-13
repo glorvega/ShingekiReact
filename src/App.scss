@@ -43,6 +43,46 @@
     }
   }
 }
+.titan__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+
+  @media(max-width: $large){
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+}
+@media(max-width: $desktop){
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+    .titan {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 30px 30px;
+
+    &__image {
+    width: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      margin-left: 20px;
+    }
+  }
+}
 
 
 }
